@@ -7,6 +7,9 @@ const SHOWING_CN = "showing";
 
 function handleSubmit(event) {
   event.preventDefault();
+  const currentValue = input.value;
+  //   console.log(currentValue);
+  paintGreeting(currentValue);
 }
 
 function askForName() {
@@ -15,8 +18,8 @@ function askForName() {
 }
 
 function paintGreeting(text) {
-  form.classList.remove(SHOWING_CN);
-  greeting.classList.add(SHOWING_CN);
+  form.classList.remove(SHOWING_CN); //form을 지우고
+  greeting.classList.add(SHOWING_CN); //text 를 보여줄것임
   greeting.innerHTML = `Hello ${text}`;
 }
 
