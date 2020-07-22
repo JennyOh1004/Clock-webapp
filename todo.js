@@ -6,22 +6,29 @@ const TODOS_LS = "toDos";
 
 const toDos = []; //when you create todo, it will add to [] array
 
+function saveToDos() {
+  localStorage.setItem(TODOS_LS, JSON.stringify(toDos)); //object => string
+}
+
 function paintToDo(text) {
   //   console.log(text);
   const li = document.createElement("li");
   const delBtn = document.createElement("button");
-  delBtn.innerHTML = "❌";
   const span = document.createElement("span");
+  const newId = toDos.length + 1;
+  delBtn.innerHTML = "❌";
   span.innerHTML = text;
   li.appendChild(span);
   li.appendChild(delBtn);
+  li.id = newId;
   toDoList.appendChild(li);
 
   const toDoObj = {
     text: text,
-    id: toDos.length + 1,
+    id: newId,
   };
   toDos.push(toDoObj); //todo objects will push to inside the toDos.
+  saveToDos(); //call after push something inside it
 }
 
 function handleSubmit(event) {
@@ -34,6 +41,9 @@ function handleSubmit(event) {
 function loadToDos() {
   const loadedTodos = localStorage.getItem(TODOS_LS);
   if (loadedTodos !== null) {
+    // console.log(loadedTodos);
+    const parsedToDos = JSON.parse(loadedTodos);
+    // console.log(parsedToDos);
   }
 }
 
