@@ -6,6 +6,12 @@ const TODOS_LS = "toDos";
 
 const toDos = []; //when you create todo, it will add to [] array
 
+function deleteToDo(event) {
+  const btn = event.target;
+  const li = btn.parentNode;
+  toDoList.removeChild(li);
+}
+
 function saveToDos() {
   localStorage.setItem(TODOS_LS, JSON.stringify(toDos)); //object => string
 }
@@ -17,6 +23,8 @@ function paintToDo(text) {
   const span = document.createElement("span");
   const newId = toDos.length + 1;
   delBtn.innerHTML = "❌";
+  delBtn.addEventListener("click", deleteToDo);
+
   span.innerHTML = text;
   li.appendChild(span);
   li.appendChild(delBtn);
