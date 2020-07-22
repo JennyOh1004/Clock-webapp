@@ -5,11 +5,16 @@ const greeting = document.querySelector(".js-greetings");
 const USER_LS = "currentUser";
 const SHOWING_CN = "showing";
 
+function saveName(text) {
+  localStorage.setItem(USER_LS, text);
+}
+
 function handleSubmit(event) {
   event.preventDefault();
   const currentValue = input.value;
   //   console.log(currentValue);
   paintGreeting(currentValue);
+  saveName(currentValue);
 }
 
 function askForName() {
