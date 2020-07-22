@@ -38,12 +38,20 @@ function handleSubmit(event) {
   toDoInput.value = "";
 }
 
+function something(toDo) {
+  console.log(toDo.text);
+}
+
 function loadToDos() {
   const loadedTodos = localStorage.getItem(TODOS_LS);
   if (loadedTodos !== null) {
     // console.log(loadedTodos);
     const parsedToDos = JSON.parse(loadedTodos);
     // console.log(parsedToDos);
+    parsedToDos.forEach(function (toDo) {
+      //   console.log(toDo.text); //each of text will print out
+      paintToDo(toDos.text);
+    });
   }
 }
 
